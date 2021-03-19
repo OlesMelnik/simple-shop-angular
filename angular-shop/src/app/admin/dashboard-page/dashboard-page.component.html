@@ -1,0 +1,35 @@
+<div *ngIf="products.length; else loading">
+    <input class="form-control" type="text" [(ngModel)]="search" placeholder="Знайти продукт...">
+<table class="table">
+    <thead>
+    <tr>
+    <th>#</th>
+    <th>Продавець</th>
+    <th>Продукт</th>
+    <th>Ціна</th>
+    <th>Дата</th>
+    <th>Дія</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products | searchPosts:search; let idx = index">
+    <td>{{ idx + 1}}</td>
+    <td>{{ product.seller }}</td>
+    <td>{{ product.title }}</td>
+    <td>{{ product.price }}$ </td>
+    <td>{{ product.date | date:'medium':null:'uk' }} </td>
+    <td>
+    <button class="btn btn-primary"
+    [routerLink]="['/admin', 'product', product.id, 'edit']"
+    >
+    Відкрити
+    </button>
+    <button class="btn btn-danger" (click)="remove(product.id)">Видалити</button>
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<ng-template #loading>
+ <p class="text-center">Завантаження...</p>
+</ng-template>

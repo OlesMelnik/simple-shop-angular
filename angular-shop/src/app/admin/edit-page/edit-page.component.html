@@ -1,0 +1,64 @@
+<div *ngIf="form; else loading">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group"
+    [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}">
+        <label for="title">Назва продукту:</label>
+        <input class="form-control" id="title" type="text" formControlName="title">
+        <div
+        *ngIf="form.get('title').touched && form.get('title').invalid"
+        class="validation">
+            <small *ngIf="form.get('title').errors.required">
+            Введіть назву продукту
+            </small>
+        </div>
+    </div>
+    <div class="form-group"
+    [ngClass]="{invalid: form.get('price').touched && form.get('price').invalid}">
+        <label for="price">Ціна продукту:</label>
+        <input class="form-control" id="price" type="text" formControlName="price">
+        <div
+        *ngIf="form.get('price').touched && form.get('price').invalid"
+        class="validation">
+            <small *ngIf="form.get('price').errors.required">
+            Введіть ціну продукту
+            </small>
+        </div>
+    </div>
+    <div class="form-group"
+    [ngClass]="{invalid: form.get('imageSrc').touched && form.get('imageSrc').invalid}">
+        <label for="imageSrc">Url Картинка продукту:</label>
+        <input class="form-control" id="imageSrc" type="text" formControlName="imageSrc">
+        <div
+        *ngIf="form.get('imageSrc').touched && form.get('imageSrc').invalid"
+        class="validation">
+            <small *ngIf="form.get('imageSrc').errors.required">
+            Введіть url картинку продукту
+            </small>
+        </div>
+    </div>
+    <div class="form-group"
+    [ngClass]="{invalid: form.get('seller').touched && form.get('seller').invalid}">
+        <label for="seller">Продавець продукту:</label>
+        <input class="form-control" id="seller" type="text" formControlName="seller">
+        <div
+        *ngIf="form.get('seller').touched && form.get('seller').invalid"
+        class="validation">
+            <small *ngIf="form.get('seller').errors.required">
+            Введіть ім'я продавця
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="text">Опис продукту:</label>
+        <quill-editor formControlName="text"></quill-editor>
+    </div>
+    <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="form.invalid || submitted"
+    >Оновити</button>
+    </form>
+   </div>
+<ng-template #loading>
+    <p class="text-center">Завантаження...</p>
+</ng-template>

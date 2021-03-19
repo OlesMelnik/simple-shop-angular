@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="view overlay">
+        <img class="card-img-top" src={{product.imageSrc}}/>
+    </div>
+    <div class="card-body">
+        <h4>{{ product.title }}</h4>
+        <p>{{ product.price }} $</p>
+    <div class="row">
+        <div class="col-md-12">
+            <button [routerLink]="['/product', product.id]"
+            class="btn btn-primary">Переглянути
+            </button >
+            <button *ngIf="getUser()!==null" (click)="addToCart()" class="btn btn-success">Добавити</button>
+        </div>
+    </div>
+    </div>
+</div>

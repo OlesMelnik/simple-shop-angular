@@ -1,0 +1,32 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="for-group">
+        <img src={{user.photoUrl}}>
+    </div>
+    <div class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" readonly value={{user.name}} formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="email">email</label>
+        <input class="form-control" readonly value={{user.email}} formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="phone">phone</label>
+        <input class="form-control" value={{user.phone}} formControlName="phone">
+    </div>
+    <div class="form-group">
+        <label for="photoUrl">photoUrl</label>
+        <input class="form-control" value={{user.photoUrl}} formControlName="photoUrl">
+    </div>
+    <div class="form-group">
+        <label for="age">age</label>
+        <input class="form-control" value={{user.photoUrl}} formControlName="age">
+    </div>
+    
+    <button
+ type="submit"
+ class="btn btn-primary"
+ >save</button>
+</form>
+   

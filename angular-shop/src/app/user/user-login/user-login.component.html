@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group" 
+    [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}">
+        <label for="email">Введіть ваш email:</label>
+        <input class="form-control" id="email" type="text" formControlName="email">
+        <div *ngIf="form.get('email').touched && form.get('email').invalid"
+        class="validation">
+            <small *ngIf="form.get('email').errors.required">
+            Введіть email
+            </small>
+        </div>
+    </div>
+    <div class="form-group" 
+    [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}">
+        <label for="password">Введіть ваш пароль:</label>
+        <input class="form-control" id="password" type="password" formControlName="password">
+        <div *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="validation">
+            <small *ngIf="form.get('password').errors.required">
+            Введіть пароль
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Не маєте аккаунту? Реєструйтесь <a [routerLink]="['/user','register']">тут</a></span>
+    </div>
+   <button
+    type="submit"
+    class="btn btn-block btn-primary"
+    [disabled]="form.invalid"
+   >Submit</button>
+</form> 

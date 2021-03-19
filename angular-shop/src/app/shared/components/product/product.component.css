@@ -1,0 +1,17 @@
+.card{
+    margin: 0 10px;
+    width: 250px;
+    height: 450px;
+    padding: 0;
+}
+
+button{
+    margin: 5px 0;
+}
+
+img{
+    margin: 0;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}

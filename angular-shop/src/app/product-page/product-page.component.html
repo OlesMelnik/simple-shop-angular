@@ -1,0 +1,47 @@
+<div *ngIf="product$ | async as product; else loading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src={{product.imageSrc}}/>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        Продукт: 
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>{{product.title}}</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Ціна:</p> 
+                    </div>
+                    <div class="col-md-6">
+                        {{product.price}}$
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        Продавець: 
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ product.seller }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Опис:
+                        <quill-view-html [content]="product.text"></quill-view-html>
+                    </div>
+                </div>
+                <div class="row">
+                    <button routerLink="/" class="btn btn-primary">На головну</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <p class="text-center">Завантаження...</p>
+</ng-template>

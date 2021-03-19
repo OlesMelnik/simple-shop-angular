@@ -1,0 +1,33 @@
+<div *ngIf="products.length; else loading">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Картинка</th>
+        <th>Продукт</th>
+        <th>Продавець</th>
+        <th>Ціна</th>
+        <th>Кільсть</th>
+        <th>Дія</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+        <td class="align-middle"><img src={{product.imageSrc}}/></td>
+        <td class="align-middle">{{ product.title }}</td>
+        <td class="align-middle">{{ product.seller }}</td>    
+        <td class="align-middle">{{ product.price }}$ </td>
+        <td class="align-middle"><input min="0" type="number" (change)="changeAmount($event.target.value,product)" class="form-control" value = {{product.amount}}></td>
+        
+    <td class="align-middle">
+    <button class="btn btn-danger" (click)="remove(product.id)">Видалити</button>
+    </td>
+    </tr>
+    </tbody>
+</table>
+<div class="container">
+    <h3>Total price: {{totalPrice}}</h3>
+</div>
+</div>
+<ng-template #loading>
+ <p class="text-center">Завантаження...</p>
+</ng-template>
